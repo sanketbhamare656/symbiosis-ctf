@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon"
+        href="https://tachyonbyte.s3.ap-south-1.amazonaws.com/static/assets/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SYMBIOSIS CTF</title>
+
+    <!-- External CSS and Font -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap4-neon-glow.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel='stylesheet' href='//cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css'>
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Custom CSS for hacker theme -->
+    <style>
+        body {
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Hack', monospace;
+            margin: 0;
+            padding: 0;
+        }
+
+        #main {
+            overflow-y: auto;
+            height: 100vh;
+            padding: 0;
+            position: relative;
+        }
+
+        .navbar {
+            background-color: #000;
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 2rem;
+        }
+
+        .navbar img {
+            max-width: 25%;
+            /* Adjust this value to make images smaller */
+            height: auto;
+            /* Keep the aspect ratio intact */
+            object-fit: contain;
+            /* Ensure the images fit well within their containers */
+        }
+
+
+        .jumbotron {
+            background-color: #000;
+            color: #0f0;
+            text-align: center;
+            padding: 1rem;
+            margin-bottom: 0;
+            position: relative;
+        }
+
+        /* CSS for the 'full dark.png' image specifically */
+        .jumbotron.img1 img {
+            width: 35%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+            /* border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 255, 0, 0.3); */
+        }
+
+        .content__title {
+            margin-top: 1rem;
+            font-size: 2rem;
+        }
+
+        .content__title2 {
+            margin-top: 0.5rem;
+            font-size: 1.6rem;
+        }
+
+        .category-container {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .category-item {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+            background-color: #222;
+            color: #0f0;
+            border: 2px solid #0f0;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .category-item:hover {
+            background-color: #333;
+        }
+
+        .category-item.active {
+            background-color: #444;
+        }
+
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .challenge-description {
+            margin-top: 1rem;
+            max-width: 600px;
+            padding: 10px;
+            background-color: #333;
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            color: #0f0;
+            overflow-y: auto;
+            max-height: 200px;
+            display: none;
+            position: absolute;
+            z-index: 1;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .challenge-description h3 {
+            margin-top: 0;
+        }
+
+        .challenge-description p {
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .challenge-description a {
+            color: #0f0;
+        }
+
+        .challenge-description .btn {
+            margin-top: 10px;
+            background-color: #0f0;
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .challenge-description .btn:hover {
+            background-color: #0c0;
+        }
+
+        /* Style for the 'IN COLLABORATION WITH' text */
+        .content__title2 {
+            text-transform: uppercase;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* Style for the logo image */
+        /* Style for the logo image without shadow */
+        .collab-logo {
+            width: 150px;
+            /* Set the width */
+            height: 150px;
+            /* Set the height */
+            margin-top: 10px;
+            margin-bottom: 20px;
+            box-shadow: none;
+            object-fit: cover;
+            /* Ensure the image fits well */
+            display: block;
+            margin-left: auto;
+            /* Center the image horizontally */
+            margin-right: auto;
+            /* Center the image horizontally */
+        }
+    </style>
+</head>
+
+<body class="imgloaded">
+
+    <!-- Particles.js container -->
+    <div id="particles-js"></div>
+
+    <div id="preloader"></div>
+
+    <div id="main" class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <!-- First image on the left side -->
+            <img src="images/SCIT logo.png" class="d-inline-block">
+
+            <!-- Center image (optional, you can remove this if not needed) -->
+            <img src="images/EMINENCE - logo (1).png" class="d-inline-block">
+
+            <!-- Second image on the right side -->
+            <img src="images/Untitled_design-removebg-preview.png" class="d-inline-block">
+        </nav>
+        <img src="images/CTF - logo.png" alt="Collaboration Logo" class="collab-logo">
+        <div class="jumbotron text-center mb-0 pt-3 radius-0 jumbotron img1">
+
+            <h3 class="display-4 bold color_white content__title2">
+                IN COLLABORATION WITH
+            </h3>
+            <br>
+            <img src="images/full dark.png" alt="TachyonByte Cover Image">
+            <h1 class="display-4 bold color_white content__title">SYMBIOSIS CTF<span class="vim-caret">&nbsp;</span>
+            </h1>
+            <h2 class="display-4 bold color_white content__title2">2025</h2>
+
+            <div class="category-container">
+                <span class="category-item" onclick="showChallengeDescription('web', this)">Web</span>
+                <span class="category-item" onclick="showChallengeDescription('crypto', this)">Cryptography</span>
+                <span class="category-item" onclick="showChallengeDescription('forensic', this)">Forensic</span>
+                <span class="category-item" onclick="showChallengeDescription('osint', this)">OSINT</span>
+                <span class="category-item" onclick="showChallengeDescription('moneyheist', this)">Money Heist</span>
+
+                <!-- Challenge Description Modal -->
+                <div id="challenge-description" class="challenge-description">
+                    <div id="challenge-details">Select a category to view challenge details.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background audio -->
+    <audio autoplay loop>
+        <source src="mission.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="js/preloader.js"></script>
+
+    <!-- Custom script to show challenge description -->
+    <script>
+        function showChallengeDescription(category, element) {
+            // Remove 'active' class from all category items
+            document.querySelectorAll('.category-item').forEach(function (item) {
+                item.classList.remove('active');
+            });
+
+            // Add 'active' class to the clicked category item
+            element.classList.add('active');
+
+            // Display challenge description based on category
+            let description = '';
+            switch (category) {
+                case 'web':
+                    description = `
+                        <h3>Web Challenges</h3>
+                        <p><strong>XSS Challenge:</strong> This challenge tests your ability to exploit cross-site scripting vulnerabilities.</p>
+                        <a href="xss.html" class="btn" target="_blank">Go to XSS Challenge</a>
+                    `;
+                    break;
+                case 'crypto':
+                    description = `
+                        <h3>Cryptography Challenges</h3>
+                        <p><strong>Cryptography Challenge:</strong> This challenge tests your cryptographic skills.</p>
+                        <a href="crypto.html" class="btn" target="_blank">Go to Cryptography Challenge</a>
+                    `;
+                    break;
+                case 'forensic':
+                    description = `
+                        <h3>Forensic Challenges</h3>
+                        <p><strong>Forensics Challenge:</strong> Investigate clues to solve this mystery.</p>
+                        <a href="forensics.html" class="btn" target="_blank">Go to Forensics Challenge</a>
+                    `;
+                    break;
+                case 'osint':
+                    description = `
+                        <h3>OSINT Challenges</h3>
+                        <p><strong>OSINT Challenge:</strong> Use open-source intelligence techniques to gather information.</p>
+                        <a href="osint.html" class="btn" target="_blank">Go to OSINT Challenge</a>
+                    `;
+                    break;
+                case 'moneyheist':
+                    description = `
+                        <h3>Money Heist Challenge</h3>
+                        <p><strong>Money Heist:</strong> Help the crew of the heist!</p>
+                        <a href="moneyheist.html" class="btn" target="_blank">Go to Money Heist Challenge</a>
+                    `;
+                    break;
+            }
+
+            document.getElementById('challenge-details').innerHTML = description;
+            document.getElementById('challenge-description').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

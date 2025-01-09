@@ -1,0 +1,22 @@
+services:
+  web:
+    build: 
+      context: .
+    ports:
+      - 80:80
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: vulnerable_db
+    volumes:
+      - ctf_db_data:/var/lib/mysql 
+
+volumes:
+  ctf_db_data:
+
+
+

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSINT CTF: Multiple Challenges</title>
+    <link rel="icon" type="image/x-icon" href="https://tachyonbyte.s3.ap-south-1.amazonaws.com/static/assets/img/favicon.ico">
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #00ff00;
+            font-family: "Courier New", Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow-y: auto; /* Enable vertical scrollbar */
+            position: relative;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2em;
+            font-weight: bold;
+            color: #00ff00; /* Lime color for the heading */
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+            max-height: 90vh; /* Restrict container height */
+            overflow-y: auto; /* Enable vertical scrollbar within container */
+            background-color: #333; /* Same background as challenges for consistency */
+            border-radius: 5px; /* Optional: Add some rounding for aesthetics */
+        }
+        .challenge {
+            background-color: #222;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 0; /* Remove border radius for square edges */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+        }
+        .challenge h2 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #00ff00; /* Lime color for the challenge headings */
+        }
+        p {
+            color: #ffffff; /* White color for text */
+        }
+        button, .option-button {
+            padding: 10px 20px;
+            color: #000; /* Black text color for buttons */
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 5px;
+            text-decoration: none;
+            display: inline-block;
+            background-color: #00ff00; /* Green color */
+        }
+        button:hover, .option-button:hover {
+            background-color: #00cc00; /* Darker green on hover */
+        }
+        #networkAnimation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .line {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: rgba(0, 255, 0, 0.6);
+            animation: moveLine 5s linear infinite;
+        }
+        @keyframes moveLine {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        img {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 0; /* Remove border radius for square edges */
+        }
+        .buttons-container {
+            margin-bottom: 15px;
+        }
+        .highlight {
+            color: #ffcc00; /* Highlight color for email */
+            font-size: 1.5em; /* Larger font size for email */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="networkAnimation"></div>
+
+    <div class="container">
+        <h1>OSINT CTF: Multiple Challenges</h1>
+
+        <!-- Existing Challenges -->
+
+        <div class="challenge">
+            <h2>Challenge 1: Identify the Chinese IP</h2>
+            <p>One of the following IP addresses is from China. Find the correct one:</p>
+            <ul>
+                <li>104.244.42.1</li>
+                <li>8.8.8.8</li>
+                <li>202.108.22.5</li>
+                <li>203.0.113.5</li>
+                <li>123.45.67.89</li>
+            </ul>
+            <button onclick="window.open('https://forms.gle/dummygoogleformlink', '_blank')">Submit Flag</button>
+        </div>
+
+        <div class="challenge">
+            <h2>Challenge 2: Find the Channel Name and Location</h2>
+            <p>Below is an image related to a popular trekking spot in Nashik. Identify the name of the YouTube channel that featured this place and the exact location:</p>
+            <div class="buttons-container">
+                <a href="osint3.jpg" target="_blank" class="option-button">View Image</a>
+                <a href="osint3.jpg" download class="option-button">Download HD</a>
+            </div>
+            <img src="osint3.jpg" alt="OSINT Image Challenge">
+            <button onclick="window.open('https://forms.gle/dummygoogleformlink', '_blank')">Submit Flag</button>
+        </div>
+
+        <!-- New Challenges -->
+
+        <div class="challenge">
+            <h2>Challenge 3: Geolocation Challenge 🌍</h2>
+            <p>Determine the exact coordinates of the following places in Nashik, Maharashtra:</p>
+            <ul>
+                <li>Coordinates: <strong>19.941317, 73.748544
+
+                </strong></li>
+                <li>Coordinates: <strong>20.006946, 73.795297
+
+                </strong></li>
+            </ul>
+            <p>Use mapping tools or geolocation services to find more information about these locations and their historical significance.</p>
+            <button onclick="window.open('https://forms.gle/dummygoogleformlink', '_blank')">Submit Flag</button>
+        </div>
+
+        <div class="challenge">
+            <h2>Challenge 4: Find the Commonly Used Password 🕵️‍♂️🔐</h2>
+            <p>Email: <span class="highlight">zombiecaketv@gmail.com</span></p>
+            <p>Find a commonly used password for this email by searching through OSINT resources or data breach sites. Provide the common password used in data breaches.</p>
+            <button onclick="window.open('https://forms.gle/dummygoogleformlink', '_blank')">Submit Flag</button>
+        </div>
+    </div>
+
+    <script>
+        function createNetworkAnimation() {
+            const container = document.getElementById('networkAnimation');
+            for (let i = 0; i < 50; i++) {
+                const line = document.createElement('div');
+                line.classList.add('line');
+                line.style.left = Math.random() * 100 + "%";
+                line.style.animationDuration = Math.random() * 5 + 5 + "s";
+                container.appendChild(line);
+            }
+        }
+
+        createNetworkAnimation();
+    </script>
+
+</body>
+</html>

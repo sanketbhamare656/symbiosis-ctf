@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link rel="icon" type="image/x-icon" href="https://tachyonbyte.s3.ap-south-1.amazonaws.com/static/assets/img/favicon.ico">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptography CTF Challenges</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            color: #00ff00;
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #00ff00;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .challenge {
+            border: 2px solid #00ff00;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        .challenge h2 {
+            font-size: 1.8em;
+            margin: 0 0 10px 0;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        .cipher-text {
+            background-color: #222;
+            padding: 15px;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            font-size: 1.2em;
+            margin: 10px 0;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #00ff00;
+            color: #000;
+            border: 2px solid #00ff00;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #000;
+            color: #00ff00;
+        }
+
+        footer {
+            background-color: #111;
+            padding: 10px;
+            text-align: center;
+            color: #00ff00;
+            border-top: 2px solid #00ff00;
+        }
+
+        .hint {
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #00ff00;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cryptography CTF Challenges</h1>
+    </header>
+    <main>
+        <section class="challenge">
+            <h2 class="section-title">Challenge 1: Caesar Cipher 🕵️‍♂️</h2>
+            <p>Decode the following message:</p>
+            <div class="cipher-text">
+                Hwklfdo Kdfnlqj Zkhuh euhdnlqj lqwr vbvwhpv lv mxvw dqrwkhu gdb dw wkh riilfh iru vrph.
+            </div>
+            <p class="hint">Hint: Caesar Cipher (🠞3 🠜23)</p>
+        </section>
+        <section class="challenge">
+            <h2 class="section-title">Challenge 2: ROT-13 Cipher 🔐</h2>
+            <p>Decode the following message:</p>
+            <div class="cipher-text">
+NV vf yvxr univat n fhcre-fzneg nffvfgnag jub fgvyy pna'g znxr pbssrr            </div>
+            <p class="hint">Hint: ROT-13 Cipher</p>
+        </section>
+        <section class="challenge">
+            <h2 class="section-title">Challenge 3: Base64 Encoding 🔢</h2>
+            <p>Decode the following Base64 encoded messages:</p>
+            <div class="cipher-text">
+                Q3liZXJzZWN1cml0eSBpcyBUaGUgYXJ0IG9mIG1ha2luZyBzdXJlIHlvdXIgZGF0YSBpcyBzYWZlciB0aGFuIHlvdXIgV2ktRmkgcGFzc3dvcmQK
+            </div>
+            <div class="cipher-text">
+                Q2lwaGVycyBhcmUgdGhlIGFydCBvZiBoaWRpbmcgc2VjcmV0cyBpbiBwbGFpbiBzaWdodCwgdHVybmluZyBvcmRpbmFyeSB0ZXh0IGludG8gYW4gdW5yZWFkYWJsZSBwdXp6bGU=
+            </div>
+            <p class="hint">Hint: Base64 Encoding</p>
+        </section>
+        <section class="challenge">
+            <h2 class="section-title">Challenge 4: Decode Image 📷</h2>
+            <p>Decode the Base64 encoded image below. Click the button to view or download the base64 encoded file:</p>
+            <a href="khufiya_msg.txt" class="download-link" target="_blank">
+                <button>View Base64 File</button>
+            </a>
+        </section>
+        <section class="challenge">
+            <h2 class="section-title">Bonus Challenge 🎉</h2>
+            <p>Decode the following Base64 encoded message:</p>
+            <div class="cipher-text">
+                VGFjaHlvbkJ5dGUgVGVjaG5vbG9naWVzIFByaXZhdGUgTGltaXRlZCBpcyBTdGFydHVwIENvbXBhbnkgd29ya2luZyBvbiBTb2Z0d2FyZSBhcyBhIFNlcnZpY2UgKFNhYVMpIE9mZmVyaW5ncyBmb3IgdW5kZXJzZXJ2ZWQgbWFya2V0cyBhbmQgQm9vc3RpbmcgRXZvbHV0aW9uIHdpdGggVGVjaG5vbG9neSAK
+            </div>
+            <p class="hint">Hint: Base64 Encoding</p>
+        </section>
+        <section class="challenge">
+            <h2 class="section-title">Challenge 6: Decode Base64 GIF 🎨</h2>
+            <p>Decode the Base64 encoded GIF file and view or download the provided file:</p>
+            <a href="khufiya_gif.txt" class="download-link" target="_blank">
+                <button>View Base64 GIF</button>
+            </a>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Cryptography CTF 🛡️</p>
+    </footer>
+</body>
+</html>

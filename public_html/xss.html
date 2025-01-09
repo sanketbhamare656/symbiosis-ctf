@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link rel="icon" type="image/x-icon" href="https://tachyonbyte.s3.ap-south-1.amazonaws.com/static/assets/img/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple XSS Challenge</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1; /* Ensure it appears above background GIF */
+        }
+        .frame {
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #333;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            max-width: 600px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            z-index: 1; /* Ensure it appears above background image */
+        }
+        input[type="text"] {
+            background-color: #222;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            color: #00ff00;
+            padding: 10px;
+            width: calc(100% - 22px);
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            background-color: #00ff00;
+            border: none;
+            border-radius: 5px;
+            color: #1e1e1e;
+            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #00cc00;
+        }
+        .gif {
+            margin-top: 20px;
+        }
+        .alert, .hint {
+            background-color: #ff0000;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 18px; /* Increased font size for better readability */
+            font-weight: bold; /* Bold text for emphasis */
+            text-transform: uppercase; /* Uppercase text for hacker theme */
+            display: block;
+        }
+        .alert {
+            animation: flash 1s linear infinite;
+        }
+        .hint {
+            background-color: #ff6600; /* Orange background for hint */
+            animation: blink 6s linear infinite; /* Slower blinking effect */
+            position: absolute;
+            top: 20px; /* Adjusted for better visibility */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2; /* Ensure hint is visible above background */
+            opacity: 1; /* Start visible */
+            transition: opacity 1s ease-out; /* Smooth opacity transition */
+        }
+        .flag {
+            font-weight: bold;
+            color: #ff0000;
+            margin-top: 20px;
+            font-size: 24px; /* Larger font size for flag */
+            background-color: #ffcccc; /* Pink background for flag */
+            padding: 10px;
+            border-radius: 5px;
+            animation: pulse 1.5s infinite;
+            display: inline-block; /* Ensures the background color appears correctly */
+        }
+        .scrollable-content {
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 10px;
+            border-top: 2px solid #00ff00;
+            border-bottom: 2px solid #00ff00;
+            background-color: #222;
+        }
+        @keyframes flash {
+            0% { background-color: #ff0000; }
+            50% { background-color: #ff6666; }
+            100% { background-color: #ff0000; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .hidden {
+            display: none; /* Hide element completely */
+        }
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('cyber.gif') no-repeat center center fixed;
+            background-size: cover;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="container">
+        <div class="frame">
+            <h1>Simple XSS Challenge</h1>
+            <form id="searchForm" action="" method="get">
+                <input type="text" id="query" name="query" placeholder="Enter your search">
+                <input type="submit" value="Search">
+            </form>
+            
+            <div id="hintContainer" class="hint hidden"></div>
+
+            <div id="gifContainer" class="gif"></div>
+
+            <div id="result" class="scrollable-content">
+                <!-- Placeholder for dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const query = document.getElementById('query').value;
+
+            // Clear previous results
+            document.getElementById('gifContainer').innerHTML = '';
+            document.getElementById('result').innerHTML = '';
+            document.getElementById('hintContainer').innerHTML = '';
+
+            // Check for XSS payloads
+            if (
+                query.includes('<script>') || 
+                query.includes('<img') || 
+                query.includes('<svg') || 
+                query.includes('</scrip') || 
+                query.includes('<audio') || 
+                query.includes('<video') || 
+                query.includes('<body') || 
+                query.includes('<object') || 
+                query.includes('<frameset') || 
+                query.includes('<title') || 
+                query.includes('<iframe') || 
+                query.includes('<html') || 
+                query.includes('<source') || 
+                query.includes('<form') || 
+                query.includes('<button')
+            ) {
+                // Show hint and flag if XSS payload detected
+                const hintElement = document.getElementById('hintContainer');
+                hintElement.innerHTML = '<p>Well done, you XSS guru! Maybe next time try breaking something that isn\'t already broken?</p>';
+                hintElement.classList.remove('hidden'); // Ensure hint is visible
+                hintElement.style.animation = 'blink 6s linear infinite'; // Apply slower blinking effect
+
+                document.getElementById('gifContainer').innerHTML = '<img src="munna.gif" alt="Success GIF">';
+                document.getElementById('result').innerHTML = '<p class="flag">Flag: CTF{tachyonX33B00M}</p>';
+                document.body.style.backgroundImage = 'url(https://www.pwc.com/mt/en/services/cyber-security/cyber-attack-.gif)'; // Set background GIF
+                
+                // Hide hint after 5 seconds
+                setTimeout(() => {
+                    hintElement.style.opacity = '0'; // Fade out hint
+                    setTimeout(() => {
+                        hintElement.classList.add('hidden'); // Hide completely after fade-out
+                    }, 1000); // Match this duration with the opacity transition duration
+                }, 5000);
+            } else {
+                // Show loading GIF for normal queries
+                document.getElementById('gifContainer').innerHTML = '<img src="panvel.gif" alt="Loading GIF">';
+                document.getElementById('hintContainer').innerHTML = '<p>Take it easy, the real fun begins when you discover XSS vulnerabilities.</p>';
+                document.getElementById('hintContainer').classList.remove('hidden'); // Show hint for non-XSS queries
+            }
+        });
+    </script>
+</body>
+</html>

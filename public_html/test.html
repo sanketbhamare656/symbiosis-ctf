@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Heist - CTF Challenge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #e0e0e0;
+            background-color: #121212;
+            overflow-x: hidden;
+        }
+
+        h1, h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #ff4747;
+            text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.6);
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 20px 0;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #00ff00;
+            margin-bottom: 20px;
+        }
+
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 100px 20px;
+            color: #fff;
+            background: url('https://example.com/money-heist-background.jpg') no-repeat center center/cover;
+            height: 80vh;
+            background-attachment: fixed;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin: 0;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin: 20px 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 20px 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+            background-color: #ff4747;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #e63e3e;
+        }
+
+        .content {
+            padding: 50px 20px;
+        }
+
+        .category {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00ff00;
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .challenge-card {
+            background-color: #1c1c1c;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .challenge-card:hover {
+            transform: scale(1.05);
+        }
+
+        .challenge-card h3 {
+            font-size: 1.5rem;
+            color: #00ff00;
+            margin-bottom: 10px;
+        }
+
+        .challenge-card p {
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        .challenge-card a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+            background-color: #ff4747;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .challenge-card a:hover {
+            background-color: #e63e3e;
+        }
+
+        footer {
+            padding: 20px;
+            background-color: #222;
+            color: #999;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Styles for the loading animation */
+        .gif-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8) no-repeat center center;
+            background-size: cover;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: #fff;
+            z-index: 1000;
+        }
+
+        .gif-overlay .message {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.6);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .gif-overlay img {
+            width: 50%;
+            max-width: 600px;
+            animation: scaleUp 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleUp {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Money Heist</h1>
+        <h2>Plan the Perfect Heist</h2>
+        <p>Your mission is to infiltrate the Royal Mint and retrieve the hidden fortune. Are you ready to test your hacking skills in the ultimate CTF challenge?</p>
+        <a href="#challenges" class="cta-button" onclick="startHeist()">Start the Heist</a>
+    </section>
+
+    <div class="content">
+        <div class="category">Challenges</div>
+        <div class="challenge-grid" id="challenges">
+            <div class="challenge-card">
+                <h3>Berlin BTC Heist Access🔓</h3>
+                <p>Transfer ₿💰 and win the flag🚩. Are you ready?</p>
+                <a href="index3.php" target="_blank" class="cta-button">Start Challenge</a>
+            </div>
+            <div class="challenge-card">
+                <h3>Heist the Browser Vault🕵️‍♂️</h3>
+                <p>Uncover the XSS vulnerability and execute your script to unlock the hidden cache. Can you outsmart the security?</p>
+                <a href="test.php" target="_blank" class="cta-button">Crack the Vault</a>
+            </div>
+            
+            <div class="challenge-card">
+                <h3>Decode the Vault's Secret📦🔓</h3>
+                <p>Retrieve the zip file containing a hidden text file. Inside, Decode it to unveil the secret!</p>
+                <a href="decode_challenge.zip" target="_blank" class="cta-button">Start Challenge</a>
+            </div>
+            
+            <div class="challenge-card">
+                <h3>Infiltrate the Bank's Network🖥️</h3>
+                <p>You've got the IP. Now break into the bank's network to uncover two hidden vault keys. Only the sharpest minds can find them!</p>
+                <a href="#" target="_blank" class="cta-button" onclick="consoleAlert()">Start Heist</a>
+
+                <script>
+                function consoleAlert() {
+                    console.log("Do whatever you want, you have the IP now.");
+                    alert("If you have the IP, then do what hackers do.");
+                }
+                </script>
+                            </div>
+            
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Money Heist CTF. All Rights Reserved. Powered by TachyonByte CTF.</p>
+    </footer>
+
+    <!-- Loading animation -->
+    <div class="gif-overlay" id="loadingOverlay">
+        <div class="message">Mask Up Now</div>
+        <img src="prof.gif" alt="Loading GIF">
+    </div>
+
+    <!-- Audio element for the background song -->
+    <audio id="backgroundMusic" src="io.mp3" preload="auto"></audio>
+
+    <script>
+        function startHeist() {
+            // Show the loading overlay and play the song
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            const backgroundMusic = document.getElementById('backgroundMusic');
+
+            loadingOverlay.style.display = 'flex';
+            backgroundMusic.play().catch(error => {
+                console.log('Audio playback was prevented:', error);
+            });
+
+            // Hide the overlay after 3 seconds
+            setTimeout(function() {
+                loadingOverlay.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <link rel="icon" type="image/x-icon" href="https://tachyonbyte.s3.ap-south-1.amazonaws.com/static/assets/img/favicon.ico">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forensic Challenge</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            color: #00ff00;
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://c.tenor.com/qzL4YEQn_T0AAAAd/tenor.gif');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        header {
+            background-color: rgba(17, 17, 17, 0.9);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #00ff00;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        main {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            max-width: 1200px;
+            margin: auto;
+            box-sizing: border-box;
+        }
+
+        .challenge {
+            border: 2px solid #00ff00;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            text-align: center;
+        }
+
+        .challenge h2 {
+            font-size: 1.8em;
+            margin: 0 0 10px 0;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        .cipher-text {
+            background-color: #222;
+            padding: 15px;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            font-size: 1.2em;
+            margin: 10px 0;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #00ff00;
+            color: #000;
+            border: 2px solid #00ff00;
+            padding: 5px 10px; /* Smaller padding */
+            font-size: 0.8em; /* Smaller font size */
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+        }
+
+        button:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        button:hover {
+            background-color: #000;
+            color: #00ff00;
+        }
+
+        footer {
+            background-color: rgba(17, 17, 17, 0.9);
+            padding: 10px;
+            text-align: center;
+            color: #00ff00;
+            border-top: 2px solid #00ff00;
+        }
+
+        .hint {
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .download-link {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            font-size: 0.8em;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-align: center;
+            background-color: rgba(0, 255, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .download-link:hover {
+            color: #000;
+            background-color: #00ff00;
+            border-color: #000;
+        }
+
+        .images-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .images-container img {
+            max-width: 200px; /* Smaller size */
+            height: auto;
+            margin: 10px;
+            border: 2px solid #00ff00;
+            border-radius: 5px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #00ff00;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        .image-description {
+            text-align: center;
+            color: #00ff00;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Forensic Challenge 🕵️‍♂️🔍</h1>
+    </header>
+    <main>
+        <section class="challenge">
+            <h2 class="section-title">Forensic Task Description 🔍</h2>
+            <p><strong>Complete the following forensic tasks:</strong></p>
+            <ul>
+                <li><strong>Task 1:</strong> Crack the zip file password to access the hidden flag.</li>
+                <li><strong>Task 2:</strong> Download and inspect the images to find hidden flags.</li>
+            </ul>
+            <a href="flag.zip" class="download-link" id="download-zip">Download Zip File</a>
+        </section>
+        <section class="challenge">
+            <h2 class="section-title">Challenge 1: Crack the Zip File 🔓</h2>
+            <p><strong>The zip file contains a hidden flag inside a text file. Use a common wordlist to crack the password and extract the file. Good luck!</strong></p>
+        </section>
+        <section class="challenge">
+            <h2 class="section-title">Challenge 2: Extract Flag from Images 🖼️</h2>
+            <p><strong>Download the images below and inspect them to find hidden flags. The flags are embedded in the images. Good luck!</strong></p>
+            <div class="images-container">
+                <div>
+                    <img src="Forensic.jpeg" alt="Forensic Image">
+                    <p class="image-description"><strong>Forensic Image</strong></p>
+                    <button class="download-link" onclick="downloadImage('Forensic.jpeg')">Download Forensic.jpeg</button>
+                </div>
+                <div>
+                    <img src="Munna.jpeg" alt="Munna">
+                    <p class="image-description"><strong>Munna.jpeg</strong></p>
+                    <button class="download-link" onclick="downloadImage('Munna.jpeg')">Download Munna.jpeg</button>
+                </div>
+                <div>
+                    <img src="Saas.jpeg" alt="Saas">
+                    <p class="image-description"><strong>Saas.jpeg</strong></p>
+                    <button class="download-link" onclick="downloadImage('Saas.jpeg')">Download Saas.jpeg</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Forensic CTF 🛡️</p>
+    </footer>
+
+    <script>
+        function downloadImage(imageName) {
+            const link = document.createElement('a');
+            link.href = imageName;
+            link.download = imageName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+
+</html>
