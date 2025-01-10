@@ -228,6 +228,10 @@
                 <span class="category-item" onclick="showChallengeDescription('forensic', this)">Forensic</span>
                 <span class="category-item" onclick="showChallengeDescription('osint', this)">OSINT</span>
                 <span class="category-item" onclick="showChallengeDescription('moneyheist', this)">Money Heist</span>
+                <span class="category-item" onclick="showChallengeDescription('squid', this)">Squid Games</span>
+                <span class="category-item" onclick="showChallengeDescription('harshad', this)">Harshad Meheta</span>
+
+                <span class="category-item" onclick="showChallengeDescription('more', this)">More Challenges+</span>
 
                 <!-- Challenge Description Modal -->
                 <div id="challenge-description" class="challenge-description">
@@ -273,6 +277,8 @@
                         <h3>Web Challenges</h3>
                         <p><strong>XSS Challenge:</strong> This challenge tests your ability to exploit cross-site scripting vulnerabilities.</p>
                         <a href="xss.html" class="btn" target="_blank">Go to XSS Challenge</a>
+                        <p><strong>Nuclear Panel Challenge:</strong> This challenge involves exploiting vulnerabilities in a web-based nuclear control panel.</p>
+                        <a href="login.php" class="btn" target="_blank">Go to Nuclear Panel Challenge</a>
                     `;
                     break;
                 case 'crypto':
@@ -286,7 +292,7 @@
                     description = `
                         <h3>Forensic Challenges</h3>
                         <p><strong>Forensics Challenge:</strong> Investigate clues to solve this mystery.</p>
-                        <a href="forensics.html" class="btn" target="_blank">Go to Forensics Challenge</a>
+                        <a href="Forensic.html" class="btn" target="_blank">Go to Forensics Challenge</a>
                     `;
                     break;
                 case 'osint':
@@ -300,7 +306,31 @@
                     description = `
                         <h3>Money Heist Challenge</h3>
                         <p><strong>Money Heist:</strong> Help the crew of the heist!</p>
-                        <a href="moneyheist.html" class="btn" target="_blank">Go to Money Heist Challenge</a>
+                        <a href="index77.php" class="btn" target="_blank">Go to Money Heist Challenge</a>
+                    `;
+                    break;
+
+                case 'squid':
+                    description = `
+                        <h3>Squid Game's Challenge</h3>
+                        <p><strong>Squid Game:</strong> Play or Do or Die!</p>
+                        <a href="index77.php" class="btn" target="_blank">Go to Money Heist Challenge</a>
+                    `;
+                    break;
+
+                case 'harshad':
+                    description = `
+                        <h3>Harshad Mehata Challenge</h3>
+                        <p><strong>Harshad Mehata:</strong> Help harshad meheta to manipulate stocks!</p>
+                        <a href="https://diedromeo.github.io/ctf1/" class="btn" target="_blank">Go to Money Heist Challenge</a>
+                    `;
+                    break;
+
+                case 'more':
+                    description = `
+                        <h3>More Challenges+</h3>
+                        <p>For <strong>More Challenges</strong> Click Here!</p>
+                        <a href="https://ctf2-33f7.onrender.com" class="btn" target="_blank">More Challenges</a>
                     `;
                     break;
             }
