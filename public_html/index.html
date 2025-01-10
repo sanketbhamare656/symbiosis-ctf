@@ -19,6 +19,15 @@
 
     <!-- Custom CSS for hacker theme -->
     <style>
+        html {
+            scrollbar-width: none !important; /* Firefox */
+            -ms-overflow-style: none !important; /* Internet Explorer 10+ */
+        }
+
+        html::-webkit-scrollbar {
+            display: none !important; /* Chrome, Safari, and Edge */
+        }
+
         body {
             background-color: #000;
             color: #0f0;
@@ -189,6 +198,11 @@
             margin-right: auto;
             /* Center the image horizontally */
         }
+
+        .container{
+            scrollbar-width: none !important; /* Firefox */
+            -ms-overflow-style: none !important;
+        }
     </style>
 </head>
 
@@ -320,7 +334,7 @@
 
                 case 'harshad':
                     description = `
-                        <h3>Harshad Mehata Challenge</h3>
+                        <h3>Harshad Meheta Challenge</h3>
                         <p><strong>Harshad Mehata:</strong> Help harshad meheta to manipulate stocks!</p>
                         <a href="https://diedromeo.github.io/ctf1/" class="btn" target="_blank">Go to Money Heist Challenge</a>
                     `;
